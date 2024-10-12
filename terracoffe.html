@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Coffee - Premium Coffee Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo img {
+            height: 40px;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        .hero-section {
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: 10%;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin: 0 0 20px;
+            color: #333;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .about-section {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-section {
+            background-color: #E6F2E3;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .menu-item p {
+            margin: 0 0 15px;
+            color: #666;
+        }
+
+        .menu-item .price {
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
+        .contact-section {
+            background-color: #F5F5F5;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-form form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+
+            .about-text, .about-image {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="Cuplikan layar 2024-10-12 151625.png" alt="Terra Coffee Logo">
+                </div>
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>Discover Premium Coffee at Terra</h1>
+            <p>Indulge in our expertly crafted brews, sourced from the finest beans around the world.</p>
+            <a href="#menu" class="cta-button">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <section class="about-section section" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>At Terra Coffee, we're more than just a coffee shop. We're a community of passionate coffee lovers dedicated to bringing you the perfect cup. Our journey began with a simple idea: to create a space where quality coffee meets warm hospitality.</p>
+                    <p>Every bean we source, every brew we perfect, and every smile we share is part of our commitment to elevate your coffee experience. Join us in our cozy atmosphere and discover why Terra Coffee is Jakarta's favorite coffee destination.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="Terra Coffee Shop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Signature Brews</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="espresso.jpeg" alt="Espresso">
+                    <div class="menu-item-content">
+                        <h3>Classic Espresso</h3>
+                        <p>Rich and full-bodied, our signature espresso blend.</p>
+                        <span class="price">Rp 25.000</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="Iced Caramel Latte - Baking Mischief.jpeg" alt="Latte">
+                    <div class="menu-item-content">
+                        <h3>Creamy Latte</h3>
+                        <p>Smooth espresso with velvety steamed milk.</p>
+                        <span class="price">Rp 35.000</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="Cold Brew Concentrate Recipe {Better Than Starbucks!}.jpeg" alt="Cold Brew">
+                    <div class="menu-item-content">
+                        <h3>Refreshing Cold Brew</h3>
+                        <p>Slow-steeped for 24 hours, smooth and bold.</p>
+                        <span class="price">Rp 30.000</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="cappucino.jpeg" alt="Cappuccino">
+                    <div class="menu-item-content">
+                        <h3>Perfect Cappuccino</h3>
+                        <p>Equal parts espresso, steamed milk, and foam.</p>
+                        <span class="price">Rp 32.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Visit Us</h3>
+                    <p>SMKN 20 Jakarta</p>
+                    <p>Open Daily: 7AM - 10PM</p>
+                    <h3>Contact</h3>
+                    <p>Email: farrizqimaulana@gmail.com</p>
+                    <p>Phone: 088212217103</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Terra Coffee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

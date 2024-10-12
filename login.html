@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Coffee Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            color: #3a5a40;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #a3b18a;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #588157;
+            color: white;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #3a5a40;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+        #error-message {
+            color: red;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="Cuplikan layar 2024-10-12 151625.png" alt="Terra Coffee Logo">
+        </div>
+        <h1>Terra Coffee</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="error-message"></div>
+    </div>
+    <a href="file:///C:/FarRize/Otodidak%20coding%20awalan/login.html">Buka Terra Coffee</a>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Simulasi autentikasi sederhana
+            if (username === 'TerraResink' && password === 'Kopienak') {
+                // Login berhasil, arahkan ke halaman home
+                window.location.href = 'terracoffe.html';  // Ganti dengan nama file home Anda
+            } else {
+                // Login gagal, tampilkan pesan error
+                document.getElementById('error-message').textContent = 'Username atau password salah';
+            }
+        });
+    </script>
+</body>
+</html>
